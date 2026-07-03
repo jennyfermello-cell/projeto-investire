@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Investire - Cadastro de Ativos{% endblock %}
+
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-sm-12 col-lg-6 offset-lg-3">
+        <h1>Lançamentos de Novos Ativos</h1>
+    </div>
+    <hr>
+    <div class="col-lg-6 offset-lg-3 col-sm-12">
+        <form action="{{ url_for('salvar_ativo', id=id) }}" method="POST">
+            <div class="mb-2">
+                <label for="nome">Nome</label>
+                <input type="text" placeholder="Ex.: GARE11" name="nome" id="nome" class="form-control"
+                    value="{{ ativo.nome if ativo.nome else '' }}" required />
+            </div>
+            <div class="mb-2">
+                <label for="preco_de_compra">Preço de compra</label>
+                <input type="number" placeholder="12.80" class="form-control" step="0.01" name="preco_de_compra" id="preco_de_compra"
+                    value="{{ ativo.preco_de_compra if ativo.preco_de_compra else '' }}" required />
+            </div>
+            <div class="mb-2">
+                <label for="qtd_comprada">Quantidade Comprada:</label>
+                <input type="number" placeholder="Ex.: 20" class="form-control" step="1" name="qtd_comprada" id="qtd_comprada"
+                    value="{{ ativo.qtd_comprada if ativo.qtd_comprada else '' }}" required />
+            </div>
+            <div class="mb-2">
+                <label for="data_compra">Data da Compra</label>
+                <input type="date" class="form-control" name="data_compra" id="data_compra"
+                    value="{{ ativo.data_compra if ativo and ativo.data_compra else '' }}" />
+            </div>
+            <div class="d-grid gap-2 mt-4">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+            <a href="{{ url_for('home') }}" id="link" class="btn btn-secondary mt-2">
+                Voltar
+            </a>
+        </form>
+    </div>
+</div>
+{% endblock %}

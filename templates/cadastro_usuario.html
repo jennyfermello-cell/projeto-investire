@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Investire - Cadastro de Usuário{% endblock %}
+
+{% block content %}
+    <div class="container">
+		<div class="col-lg-6 offset-lg-3 col-sm-12">
+			{% if resultado == 'email_existe' %}
+				<div class="alert alert-danger alert-dismissible fade show"
+					role="alert">
+					E-mail já cadastrado. Tente novamente.
+					<button type="button" class="btn-close" data-bs-dismiss="alert"
+						aria-label="Close"></button>
+				</div>
+			{% endif %}
+			
+			<form action="{{url_for('salvar_usuario')}}" method="post" id="form1">
+				<h1 class="text-center">Cadastre-se</h1>
+
+				<div class="mb-2">
+					<label for="nome">Nome completo*</label> 
+					<input type="text"
+						name="nome" id="nome" class="form-control" minlength="3"
+						maxlength="50" required="required"> 
+						<span id="0"></span>
+				</div>
+
+				<div class="mb-2">
+					<label for="email">E-mail*</label> 
+					<input type="email" name="email"
+						id="email" class="form-control" required="required"> 
+						<span id="1"></span>
+				</div>
+
+				<div class="mb-2">
+					<label for="senha">Senha*</label> <input type="password"
+						name="senha" id="senha" class="form-control" minlength="6"
+						maxlength="12" required="required"> 
+						<span id="2"></span>
+				</div>
+
+				<div class="mb-2">
+					<label for="data_nascimento">Data de Nascimento*</label> <input
+						type="date" name="data_nascimento" id="data_nascimento"
+						class="form-control" max="2012-12-31" required="required">
+					<span id="4"></span>
+				</div>
+
+				<div class="mb-2">
+					<label for="genero">Gênero*</label> <select class="form-select"
+						name="genero" id="genero" required="required">
+						<option value="" selected>Selecione</option>
+						<option value="MASCULINO">Masculino</option>
+						<option value="FEMININO">Feminino</option>
+					</select> 
+					<span id="5"></span> 
+				</div>
+
+				<div class="mb-2">
+					<button type="submit" class="btn btn-primary">Salvar</button>
+				</div>
+				<div class="mb-2">
+					<a href="{{ url_for('login') }}" class="btn btn-secondary" id="link">Cancelar</a>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

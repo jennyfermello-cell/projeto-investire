@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Investire - Página de Login{% endblock %}
+
+{% block content %}
+
+  	<div class="container">
+		<div class="col-lg-4 offset-lg-4 col-sm-12">
+			{% if resultado == 'cadastrado' %}
+				<div class="alert alert-success alert-dismissible fade show"
+					role="alert">
+					Usuário cadastrado com sucesso. Faça o login.
+					<button type="button" class="btn-close" data-bs-dismiss="alert"
+						aria-label="Close"></button>
+				</div>
+			{% endif %}
+			{% if resultado == 'falha' %}
+				<div class="alert alert-danger alert-dismissible fade show"
+					role="alert">
+					E-mail e/ou senha inválidos.
+					<button type="button" class="btn-close" data-bs-dismiss="alert"
+						aria-label="Close"></button>
+				</div>
+			{% endif %}
+
+	  		<form action="{{url_for('autenticar')}}" method="post">
+	  				<h1 class="text-center">Login</h1>
+	  				<div class="input-group mb-3">
+	  					<span class="input-group-text">
+							<i class="bi bi-envelope"></i>
+						</span>
+	  					<input type="email" name="email" id="email"
+	  						placeholder="E-mail" required="required"
+	  						class="form-control">
+	  				</div>
+	  				<div class="input-group mb-3">
+	  					<span class="input-group-text">
+	  						<i class="bi bi-file-lock"></i>
+	  					</span>
+	  					<input type="password" name="senha" id="senha"
+	  						placeholder="Senha" required="required"
+	  						class="form-control">
+	  				</div>
+	  				<div class="mb-3">
+                        <!-- btn-btn-primary -> usa a cor primária do botão do bootstrap(azul) -->
+	  					<button type="submit" class="btn btn-primary" name="action" 
+	  						value="login">Login</button>
+	  				</div>
+	  				<div class="mb-3">
+	  					<a href="{{url_for('cadastro_usuario')}}" id="link"
+	  						class="btn btn-secondary">Cadastrar</a>
+	  				</div>
+	  		</form>
+  		</div>
+  	</div>
+{% endblock %}
