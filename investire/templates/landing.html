@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Investire - Bem-vindo{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="landing-wrapper">
+    <div class="landing-conteudo">
+        <h1>Investire</h1>
+        <p>Sua jornada nos investimentos começa aqui</p>
+
+        <div class="landing-botoes">
+            <a href="{{ url_for('login') }}" class="btn btn-success btn-lg px-4">
+                <i class="bi bi-box-arrow-in-right"></i> Entrar
+            </a>
+            <a href="{{ url_for('cadastro_usuario') }}" class="btn btn-outline-light btn-lg px-4">
+                <i class="bi bi-person-plus"></i> Cadastrar
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card p-4 h-100 shadow-sm">
+                <i class="bi bi-graph-up-arrow" style="font-size: 2.5rem; color: #27ae60;"></i>
+                <h5 class="mt-3">Acompanhe sua carteira</h5>
+                <p class="text-muted">Cotações em tempo real dos seus ativos favoritos.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card p-4 h-100 shadow-sm">
+                <i class="bi bi-people-fill" style="font-size: 2.5rem; color: #27ae60;"></i>
+                <h5 class="mt-3">Grupos de investidores</h5>
+                <p class="text-muted">Compartilhe dicas e converse com outros investidores.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card p-4 h-100 shadow-sm">
+                <i class="bi bi-trophy-fill" style="font-size: 2.5rem; color: #27ae60;"></i>
+                <h5 class="mt-3">Ranking de colaboração</h5>
+                <p class="text-muted">Ganhe pontos ajudando a comunidade com dicas úteis.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer-investire">
+    <div class="container">
+        <div class="footer-contato">
+            <h5>Contato</h5>
+            <p>
+                <i class="bi bi-telephone-fill"></i>
+                (12) 3456-7890
+            </p>
+            <p>
+                <i class="bi bi-envelope-fill"></i>
+                jennyfer.mello@aluno.ifsp.edu.br
+            </p>
+            <p>
+                <i class="bi bi-geo-alt-fill"></i>
+                Rua Monsenhor José Vita, 280 - Abernéssia, Campos do Jordão - SP, 12460-000
+            </p>
+        </div>
+        <p class="footer-copy">
+            &copy; 2026 - Programação Web Dinâmica I
+        </p>
+    </div>
+</footer>
+
+{% endblock %}

@@ -1,0 +1,411 @@
+body {
+    background-color: #0d1a12 ; 
+    background-image: 
+        radial-gradient(circle at 5% 5%, rgba(46, 204, 113, 0.4) 0%, transparent 55%),  
+        radial-gradient(circle at 50% 95%, rgba(52, 152, 219, 0.15) 0%, transparent 60%), 
+        radial-gradient(circle at 85% 85%, rgba(39, 174, 96, 0.35) 0%, transparent 50%); 
+    background-attachment: fixed;
+    background-size: cover ;
+    min-height: 100vh;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.title-carteira {
+    font-family: 'Century Gothic', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    text-transform: uppercase;
+    font-weight: 300; 
+    font-size: 2.5rem; 
+    color: #ffffff; 
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px; 
+}
+.tabela-neon {
+    box-shadow: 0 0 10px rgb(201, 255, 209), 0 0 20px rgba(46, 204, 113, 0.3) ;
+    border-radius: 8px ;
+    overflow: hidden;
+}
+
+.navbar,
+.navbar-brand,
+.navbar-nav .nav-link,
+.navbar-text,
+.dropdown-toggle,
+.dropdown-item {
+    color: #ffffff ; 
+    opacity: 1 ;    
+}
+.btn-info {
+    background-color: #27ae60 ; 
+    border-color: #219653 ;     
+    color: #ffffff ;            
+}
+.btn-info:hover{
+    background-color: #2ecc71;
+    border-color: #27ae60;
+}
+.navbar-brand {
+    font-weight: bold ;
+    font-size: 1.3rem ;
+}
+.tabela-neon .btn-primary {
+    background-color: #27ae60 ; 
+    border-color: #219653 ;     
+    color: #ffffff ;            
+    font-weight: 600 ;
+}
+.tabela-neon .btn-primary:hover {
+    background-color: #2ecc71 ;
+    border-color: #27ae60 ;
+}
+.dropdown-item{
+    color: #153623 ;
+    font-weight: 500
+}
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #27ae60;
+}
+h1, .title-cadastro {
+    font-family: 'Century Gothic', 'Segoe UI', 'Helvetica Neue', sans-serif ;
+    text-transform: uppercase;
+    font-weight: 300 ; 
+    font-size: 2.5rem ; 
+    color: #ffffff ; 
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 1px ; 
+}
+.btn-primary, 
+input[type="submit"],
+button[type="submit"] {
+    background-color: #27ae60 ; 
+    border-color: #219653 ;     
+    color: #ffffff ;            
+    font-weight: 600 ;
+}
+
+/* Efeito de passar o mouse no botão Salvar */
+.btn-primary:hover,
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background-color: #2ecc71 ; 
+    border-color: #27ae60 ;
+}
+
+/* ============ AJUSTES DE CONTRASTE ============ */
+
+/* textos muted ficam legíveis no fundo escuro */
+.text-muted {
+    color: #b8c9bd !important;
+}
+
+/* títulos em cards (fundo branco) mantêm texto escuro */
+.card .text-muted,
+.card .text-secondary {
+    color: #6c757d !important;
+}
+
+/* textos "text-dark" dentro de cards claros ficam escuros */
+.card .text-dark {
+    color: #212529 !important;
+}
+
+/* tabelas escuras (quadro de líderes) herdam cor clara no header */
+.table thead.table-dark th {
+    color: #ffffff !important;
+}
+
+/* parágrafos e small soltos no fundo escuro */
+main p,
+main small,
+main .small {
+    color: #e8f3ec;
+}
+
+/* links que não sejam botões */
+main a:not(.btn):not(.nav-link):not(.dropdown-item) {
+    color: #7ee2a8;
+}
+
+main a:not(.btn):not(.nav-link):not(.dropdown-item):hover {
+    color: #2ecc71;
+}
+
+/* ============ CARDS PADRONIZADOS ============ */
+
+/* todos os cards ganham fundo branco + borda verde neon (igual tabela-neon) */
+.card {
+    background-color: #ffffff !important;
+    color: #153623 !important;
+    box-shadow: 0 0 10px rgb(201, 255, 209), 0 0 20px rgba(46, 204, 113, 0.3) !important;
+    border: 1px solid rgba(46, 204, 113, 0.5) !important;
+    border-radius: 8px !important;
+}
+
+/* títulos dentro de cards ficam escuros (não somem no fundo branco) */
+.card .card-title,
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6 {
+    color: #153623 !important;
+}
+
+/* parágrafos dentro de cards ficam escuros */
+.card .card-text,
+.card p,
+.card small,
+.card .small {
+    color: #495057 !important;
+}
+
+/* cabeçalhos de card mantêm fundo neutro claro */
+.card .card-header,
+.card .card-footer {
+    background-color: #f8f9fa !important;
+    color: #153623 !important;
+    border-color: rgba(46, 204, 113, 0.3) !important;
+}
+
+/* botões dentro de cards voltam ao estilo Bootstrap (não herdam branco) */
+.card .btn-outline-success { color: #198754 !important; }
+.card .btn-outline-primary { color: #0d6efd !important; }
+.card .btn-outline-warning { color: #cc9a06 !important; }
+.card .btn-outline-danger  { color: #dc3545 !important; }
+
+
+/* ============ TÍTULOS PADRONIZADOS ============ */
+
+/* todos os títulos usam a mesma fonte/estilo do "LANÇAMENTOS DE NOVOS ATIVOS" */
+h1, h2, h3, h4, h5, h6,
+.title-carteira,
+.title-cadastro {
+    font-family: 'Century Gothic', 'Segoe UI', 'Helvetica Neue', sans-serif !important;
+    color: #ffffff !important;
+    font-weight: 300 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+}
+
+/* títulos dentro de cards ficam escuros pra contrastar com fundo branco */
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6,
+.card .card-title {
+    color: #153623 !important;
+    text-transform: none !important;
+    font-weight: 600 !important;
+}
+
+/* ============ TÍTULOS PADRONIZADOS (todos iguais a LANÇAMENTOS) ============ */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Century Gothic', 'Segoe UI', 'Helvetica Neue', sans-serif !important;
+    color: #ffffff !important;
+    font-weight: 300 !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    letter-spacing: 1px !important;
+    font-size: 2.5rem !important;
+    margin-bottom: 20px !important;
+    line-height: 1.2 !important;
+}
+
+/* neutraliza classes do Bootstrap que sobrescrevem a cor/fonte do título */
+h1.text-success, h2.text-success, h3.text-success, h4.text-success,
+h5.text-success, h6.text-success,
+h1.text-dark, h2.text-dark, h3.text-dark, h4.text-dark,
+h5.text-dark, h6.text-dark,
+h1.text-primary, h2.text-primary, h3.text-primary, h4.text-primary,
+h5.text-primary, h6.text-primary,
+h1.text-secondary, h2.text-secondary, h3.text-secondary, h4.text-secondary,
+h5.text-secondary, h6.text-secondary {
+    color: #ffffff !important;
+}
+
+/* neutraliza display-N e fw-bold do Bootstrap */
+h1.display-1, h1.display-2, h1.display-3, h1.display-4, h1.display-5, h1.display-6,
+h2.display-1, h2.display-2, h2.display-3, h2.display-4, h2.display-5, h2.display-6,
+h3.display-1, h3.display-2, h3.display-3, h3.display-4, h3.display-5, h3.display-6 {
+    font-size: 2.5rem !important;
+    font-weight: 300 !important;
+    color: #ffffff !important;
+}
+
+/* Exceção: títulos DENTRO de cards brancos ficam escuros e menores */
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6,
+.card .card-title {
+    color: #153623 !important;
+    text-transform: none !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    font-size: 1.25rem !important;
+    letter-spacing: 0 !important;
+}
+
+/* Centraliza o subtítulo do cabeçalho de cada página */
+main > .container > .mb-4 > p,
+main > .container > .mb-4 > small {
+    text-align: center;
+}
+
+/* ============ RODAPÉ ============ */
+
+.footer-investire {
+    background-color: #0d1a12;
+    color: #ffffff;
+    padding: 35px 0 20px;
+    margin-top: 60px;
+    border-top: 1px solid rgba(46, 204, 113, 0.4);
+    width: 100%;
+    position: static;
+}
+
+.footer-investire .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-investire .footer-contato {
+    max-width: 500px;
+    margin: 0 auto;                       /* centraliza o bloco de contato */
+}
+
+.footer-investire h5 {
+    color: #ffffff;
+    text-transform: none !important;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: left !important;
+    letter-spacing: 0 !important;
+    margin-bottom: 15px;
+}
+
+.footer-investire p {
+    margin: 0 0 10px 0;
+    text-align: left;
+    color: #ffffff;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-investire i {
+    color: #7ee2a8;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.footer-investire .footer-copy {
+    text-align: center;
+    color: #b8c9bd;
+    font-size: 0.85rem;
+    margin-top: 30px;
+    border-top: 1px solid rgba(46, 204, 113, 0.2);
+    padding-top: 15px;
+    display: block;
+}
+
+/* ============ LANDING — FUNDO VERDE ESCURO ============ */
+
+.landing-wrapper {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(
+        135deg,
+        #05140a 0%,      /* verde MUITO escuro no canto */
+        #0a2314 30%,
+        #0d2e18 60%,
+        #05140a 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* brilho verde radial suave no centro */
+.landing-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(57, 255, 20, 0.12) 0%,
+        transparent 60%
+    );
+    pointer-events: none;
+}
+
+.landing-conteudo {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #ffffff;
+    max-width: 800px;
+}
+
+.landing-conteudo h1 {
+    font-family: 'Century Gothic', 'Segoe UI', 'Helvetica Neue', sans-serif !important;
+    font-size: 5rem !important;
+    font-weight: 300 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 6px !important;
+    color: #ffffff !important;
+    text-shadow:
+        0 0 10px #39ff14,
+        0 0 20px #39ff14,
+        0 0 40px rgba(46, 204, 113, 0.8),
+        0 4px 10px rgba(0, 0, 0, 0.9) !important;
+    margin-bottom: 15px !important;
+}
+
+.landing-conteudo p {
+    font-size: 1.3rem;
+    color: #e8f3ec;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    margin-bottom: 40px;
+}
+
+.landing-botoes {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.landing-botoes .btn {
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: transform 0.2s;
+}
+
+.landing-botoes .btn:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .landing-faixa-texto {
+        font-size: 2rem;
+    }
+    .landing-conteudo h1 {
+        font-size: 3rem !important;
+        letter-spacing: 3px !important;
+    }
+    .landing-conteudo p {
+        font-size: 1rem;
+    }
+}
+

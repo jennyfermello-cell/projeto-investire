@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Investire - Painel de Grupos{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <h1 class="text-success display-5 fw-bold">Painel de Grupos de Investimento</h1>
+        <p class="text-muted">Gerencie suas equipes de investimento, faça novos parceiros e organize momentos coletivos.</p>
+    </div>
+    <hr>
+
+    <div class="row mt-4 justify-content-center">
+        <!-- Card 1: Meus Grupos -->
+        <div class="col-md-5 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center">
+                    <div class="mb-3 text-success">
+                        <span style="font-size: 3rem;">💬</span>
+                    </div>
+                    <h4 class="card-title fw-semibold">Meus Grupos</h4>
+                    <p class="card-text text-muted">
+                        Acesse seus grupos, converse com os integrantes e compartilhe dicas de investimento.
+                    </p>
+                </div>
+                <div class="card-footer bg-transparent border-0 p-3">
+                    <a href="{{ url_for('meus_grupos') }}" class="btn btn-outline-success w-100">
+                        Visualizar Grupos
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Criar Novo Grupo -->
+        <div class="col-md-5 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center">
+                    <div class="mb-3 text-warning">
+                        <span style="font-size: 3rem;">➕</span>
+                    </div>
+                    <h4 class="card-title fw-semibold">Criar Novo Grupo</h4>
+                    <p class="card-text text-muted">Monte sua própria equipe de investimentos agora mesmo!</p>
+                </div>
+                <div class="card-footer bg-transparent border-0 p-3">
+                    <a href="{{ url_for('criar_grupo') }}" class="btn btn-outline-warning w-100">
+                        Criar Grupo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

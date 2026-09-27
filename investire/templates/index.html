@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Investire - Página Inicial{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-sm-12 col-lg-6 offset-lg-3">
+            <h1 class="title-carteira">Minha carteira</h1>
+        </div>
+        <hr>
+
+    {% if ativos %}
+
+        <h4 class="mb-3">
+            Valor Total Carteira:
+            <span class="text-success">R$ {{ "%.2f"|format(valor_total) }}</span>
+        </h4>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover tabela-neon">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Qtd. total</th>
+                        <th>Preço Atual</th>
+                        <th>Preço Médio</th>
+                        <th>Porcentagem na carteira</th>
+                        <th>Valor total</th>
+                        <th>Variação</th>
+                        <th>Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ativo in ativos %}
+                    <tr>
+                        <td>{{ ativo.nome }}</td>
+                        <td>{{ ativo.qtd_total }}</td>
+                        <td>R$ {{ "%.2f"|format(ativo.preco_atual) }}</td>
+                        <td>R$ {{ "%.2f"|format(ativo.calcular_preco_medio()) }}</td>
+                        <td>{{ "%.2f"|format(ativo.calcular_porcentagem_ativo(valor_total)) }}%</td>
+                        <td>R$ {{ "%.2f"|format(ativo.calcular_total()) }}</td>
+                        <td>{{ "%.2f"|format(ativo.calcular_variacao()) }}%</td>
+                        <td>
+                            <a href="{{ url_for('detalhes_ativo', nome_ativo=ativo.nome) }}"
+                               class="btn btn-sm btn-info text-white">
+                                Ver Detalhes
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    {% else %}
+        <div class="col-sm-12 col-lg-6 offset-lg-3">
+            <h2>Nenhum ativo registrado.</h2>
+        </div>
+    {% endif %}
+    </div>
+{% endblock %}

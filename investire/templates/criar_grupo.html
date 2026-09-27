@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Investire - Criar Novo Grupo{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="col-lg-6 offset-lg-3 col-sm-12">
+        <h2 class="text-success text-center">Criar Novo Grupo de Investimento</h2>
+        <p class="text-muted text-center small">Monte sua equipe e convide outros investidores para colaborar!</p>
+        <hr>
+        
+        <form action="{{ url_for('criar_grupo') }}" method="POST">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome do Grupo:</label>
+                <input type="text" name="nome" id="nome" class="form-control" 
+                       placeholder="Ex: Caçadores de oportunidades" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição do Grupo:</label>
+                <textarea name="descricao" id="descricao" class="form-control" rows="3" 
+                          placeholder="Descreva o objetivo do grupo: compartilhar dicas, analisar FIIs, etc." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-success w-100">Criar e Cadastrar</button>
+            <a href="{{ url_for('meus_grupos') }}" class="btn btn-secondary w-100 mt-2">Voltar para Meus Grupos</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

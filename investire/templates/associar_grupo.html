@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Investire - Participar de um Grupo{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="col-lg-6 offset-lg-3 col-sm-12">
+        <h2 class="text-success text-center">Participar de um Grupo de Investimentos</h2>
+        <hr>
+        
+        <form action="{{ url_for('associar_grupo') }}" method="POST">
+            <div class="mb-3">
+                <label for="grupo_id" class="form-label">Escolha um Grupo Disponível:</label>
+                <select name="grupo_id" id="grupo_id" class="form-select" required>
+                    <option value="" disabled selected>Selecione o grupo que deseja entrar...</option>
+                    {% for grupo in grupos_disponiveis %}
+                        <option value="{{ grupo.id }}">{{ grupo.nome }} - {{ grupo.descricao }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-success w-100">Confirmar Inscrição</button>
+            <a href="{{ url_for('meus_grupos') }}" class="btn btn-secondary w-100 mt-2">Voltar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

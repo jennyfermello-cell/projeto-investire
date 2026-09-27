@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block title %}Investire - {{ grupo.nome }}{% endblock %}
+{% block navbar %}{% include 'navbar.html' %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h2>{{ grupo.nome }}</h2>
+            <p class="text-muted">{{ grupo.descricao }}</p>
+        </div>
+        <a href="{{ url_for('painel_grupos') }}" class="btn btn-secondary">Voltar</a>
+    </div>
+    <hr>
+
+    {% if usuario in grupo.membros %}
+        <!-- formulário de nova dica -->
+        <div class="card mb-4">
+            <div class="card-header">Compartilhar uma dica</div>
+            <div class="card-body">
+                <form action="{{ url_for('nova_dica', grupo_id=grupo.id) }}" method="POST">
+                    <div class="mb-2">
+                        <input type="text" name="titulo" class="form-control"
+                               placeholder="Título (ex.: PETR4 caiu!)" required>
+                    </div>
+                    <div class="mb-2">
+                        <textarea name="conteudo" class="form-control" rows="3"
+                                  placeholder="Conte mais sobre essa oportunidade..." required></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <input type="text" name="ticker" class="form-control"
+                                   placeholder="Ticker (opcional, ex.: PETR4)">
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <input type="number" step="0.01" name="preco" class="form-control"
+                                   placeholder="Preço (opcional, ex.: 32.50)">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Publicar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- lista de dicas -->
+        {% if dicas %}
+            {% for dica in dicas %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ dica.titulo }}
+                        {% if dica.ticker %}
+                            <span class="badge bg-info text-dark">{{ dica.ticker }}</span>
+                        {% endif %}
+                    </h5>
+                    <p class="card-text">{{ dica.conteudo }}</p>
+                    {% if dica.preco %}
+                        <p class="text-success"><strong>R$ {{ "%.2f"|format(dica.preco) }}</strong></p>
+                    {% endif %}
+                    <small class="text-muted">
+                        Por <b>{{ dica.autor.nome }}</b> em
+                        {{ dica.criado_em.strftime("%d/%m/%Y %H:%M") }}
+                    </small>
+                    <div class="mt-2">
+                        <a href="{{ url_for('curtir_dica', dica_id=dica.id) }}"
+                           class="btn btn-sm btn-outline-primary">
+                            👍 {{ dica.total_curtidas() }}
+                        </a>
+                        {% if dica.autor_id == usuario.id or grupo.criador_id == usuario.id %}
+                            <a href="{{ url_for('excluir_dica', dica_id=dica.id) }}"
+                               class="btn btn-sm btn-outline-danger">Excluir</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted">Nenhuma dica compartilhada ainda. Seja o primeiro!</p>
+        {% endif %}
+
+    {% else %}
+        <div class="alert alert-warning">
+            Você precisa entrar no grupo para ver e postar dicas.
+            <a href="{{ url_for('entrar_grupo', grupo_id=grupo.id) }}"
+               class="btn btn-sm btn-success ms-2">Entrar no grupo</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

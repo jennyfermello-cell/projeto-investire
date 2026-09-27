@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Investire - Membros do Grupo{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Membros do Grupo: <span class="text-success">{{ grupo.nome }}</span></h2>
+    <p class="text-muted">{{ grupo.descricao }}</p>
+    <hr>
+    
+    <div class="row">
+        {% for membro in grupo.membros %}
+            <div class="col-md-3 mb-3 text-center">
+                <div class="card p-3 h-100 shadow-sm">
+                    <img src="{{ url_for('static', filename=membro.foto if membro.foto else 'img/perfil.png') }}"
+                         alt="Foto de {{ membro.nome }}"
+                         class="rounded-circle mx-auto mb-2 border border-2 border-success"
+                         style="width: 80px; height: 80px; object-fit: cover;">
+                    <h6 class="card-title mb-1">{{ membro.nome }}</h6>
+                    <p class="text-muted small mb-0">{{ membro.email }}</p>
+                    <span class="badge bg-light text-dark mt-2">{{ membro.genero }}</span>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12 text-center">
+                <div class="alert alert-warning">Este grupo ainda não possui nenhum membro participante.</div>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div class="mt-4">
+        <a href="{{ url_for('meus_grupos') }}" class="btn btn-secondary">Voltar para Meus Grupos</a>
+    </div>
+</div>
+{% endblock %}

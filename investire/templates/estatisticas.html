@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Investire - Estatísticas{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-3">
+        <div class="col">
+            <h4>Estatísticas da Carteira de Investimentos</h4>
+        </div>
+    </div>
+
+    <div class="row my-2">
+
+        <!-- Gráfico 1: evolução dos aportes -->
+        <div class="col-md-6 py-1">
+            <div class="card" style="position: relative; margin: 0 auto;">
+                <h5 class="card-title p-3">Evolução dos Aportes</h5>
+                <div class="card-body" style="height: 350px;">
+                    <canvas id="graficoEvolucao"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráfico 2: distribuição por ativo -->
+        <div class="col-md-6 py-1" style="position: relative; max-width: 450px; margin: 0 auto;">
+            <div class="card">
+                <h5 class="card-title p-3">Distribuição por Ativo</h5>
+                <div class="card-body" style="height: 350px;">
+                    <canvas id="graficoDonut"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- biblioteca de gráficos Chart.js via CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- script que desenha os gráficos -->
+<script src="/static/js/graficos.js"></script>
+{% endblock %}

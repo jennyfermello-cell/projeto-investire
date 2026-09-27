@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}Investire - Quadro de Líderes{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <h1 class="titulo-ranking">🏆 Quadro de Líderes Investire</h1>
+        <p class="text-muted">
+            Quem mais colabora com a comunidade! Poste dicas e receba curtidas dos colegas.
+        </p>
+        <small class="text-muted d-block mt-2">
+            Pontuação: <b>10</b> por dica publicada · <b>3</b> por curtida recebida
+        </small>
+    </div>
+    <hr>
+
+    <div class="col-lg-10 offset-lg-1">
+        <div class="card shadow-sm border-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="text-center" style="width: 80px;">Posição</th>
+                            <th>Investidor</th>
+                            <th class="text-center">💡 Dicas</th>
+                            <th class="text-center">👍 Curtidas</th>
+                            <th class="text-end">⭐ Pontuação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for linha in ranking %}
+                        <tr class="{% if linha.usuario.id == session.get('usuario_id') %}table-info{% elif loop.index == 1 %}table-warning{% elif loop.index == 2 %}table-light{% elif loop.index == 3 %}table-danger{% endif %}">
+                            <td class="text-center fw-bold">
+                                {% if loop.index == 1 %}🥇 1º
+                                {% elif loop.index == 2 %}🥈 2º
+                                {% elif loop.index == 3 %}🥉 3º
+                                {% else %}{{ loop.index }}º
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ url_for('static', filename=linha.usuario.foto if linha.usuario.foto else 'img/perfil.png') }}"
+                                        alt="Foto de {{ linha.usuario.nome }}"
+                                        class="rounded-circle me-3 border border-1 border-secondary"
+                                        style="width: 45px; height: 45px; object-fit: cover;">
+                                    <div>
+                                        <span class="fw-semibold text-dark">
+                                            {{ linha.usuario.nome }}
+                                            {% if linha.usuario.id == session.get('usuario_id') %}
+                                                <span class="badge bg-info text-dark">Você</span>
+                                            {% endif %}
+                                        </span><br>
+                                        <span class="text-muted small">{{ linha.usuario.genero }}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center fw-bold text-secondary">{{ linha.dicas }}</td>
+                            <td class="text-center fw-bold text-secondary">{{ linha.curtidas }}</td>
+                            <td class="text-end fw-bold text-success fs-5">{{ linha.pontuacao }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center py-5 text-muted">
+                                <h5>Nenhum investidor pontuou ainda.</h5>
+                                <p class="mb-0">Seja o primeiro a compartilhar uma dica num grupo!</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

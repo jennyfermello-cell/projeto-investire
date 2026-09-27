@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Investire - Meus Grupos{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Meus Grupos de Investimento</h2>
+        <a href="{{ url_for('associar_grupo') }}" class="btn btn-success btn-sm">Participar de Novo Grupo</a>
+    </div>
+    <hr>
+
+    {% if usuario.grupos %}
+        <div class="row">
+            {% for grupo in usuario.grupos %}
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ grupo.nome }}</h5>
+                            <p class="card-text text-muted">{{ grupo.descricao }}</p>
+                            <small class="text-muted">
+                                {{ grupo.total_membros() }} membro(s)
+                            </small>
+                        </div>
+                        <div class="card-footer bg-white border-top-0 d-flex gap-2 flex-wrap">
+                            <a href="{{ url_for('ver_grupo', grupo_id=grupo.id) }}"
+                               class="btn btn-sm btn-success">
+                                <i class="bi bi-chat-dots-fill"></i> Abrir Chat
+                            </a>
+                            <a href="{{ url_for('membros_grupo', grupo_id=grupo.id) }}"
+                               class="btn btn-sm btn-outline-primary">
+                                Integrantes
+                            </a>
+                            <a href="{{ url_for('sair_grupo', grupo_id=grupo.id) }}"
+                               class="btn btn-sm btn-outline-danger ms-auto">
+                                Sair
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="col-sm-12 col-lg-6 offset-lg-3 text-center mt-5">
+            <h3>Você ainda não participa de nenhum grupo.</h3>
+            <p class="text-muted">Participe de grupos de investimentos em conjunto com outros colaboradores!</p>
+            <a href="{{ url_for('associar_grupo') }}" class="btn btn-primary">Encontrar um Grupo</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

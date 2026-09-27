@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Investire - Gráfico{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Distribuição da Carteira</h2>
+    <hr>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <canvas id="graficoCarteira" style="max-width: 600px; margin: auto;"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+fetch("{{ url_for('dados_grafico') }}")
+  .then(r => r.json())
+  .then(dados => {
+    const ctx = document.getElementById('graficoCarteira');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: dados.ativos.map(a => a.nome),
+        datasets: [{
+          data: dados.ativos.map(a => a.valor),
+          backgroundColor: ['#0d6efd','#198754','#dc3545','#ffc107','#6f42c1','#fd7e14'],
+          borderColor: '#ffffff',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { labels: { color: '#153623' } },   /* legenda escura no fundo branco */
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const p = dados.ativos[ctx.dataIndex];
+                return `${p.nome}: R$ ${p.valor} (${p.porcentagem}%)`;
+              }
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+{% endblock %}
